@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">HS_KART</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="content_description_item_image" />
+    <string name="content_description_product_image" />
+    <string name="content_description_banner" />
+</resources>

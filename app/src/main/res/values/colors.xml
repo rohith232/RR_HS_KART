@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="green">#388E3C</color> <!-- A Material Design Green shade -->
+    <color name="gray">#808080</color> <!-- Standard Gray -->
+
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorSecondary">#FF5722</color>
+
+
+<!--    <color name="primaryDark">#3700B3</color>-->
+<!--    <color name="primaryText">#212121</color>-->
+<!--    <color name="secondaryText">#757575</color>-->
+<!--    <color name="card_stroke">#E0E0E0</color>-->
+
+
+    <color name="product_title">#212121</color>
+    <color name="card_stroke1">#EEEEEE</color>
+
+    <color name="background">#FFFBFE</color>
+    <color name="primaryDark1">#6750A4</color>
+    <color name="section_title">#1C1B1F</color>
+    <color name="search_hint">#9E9E9E</color>
+    <color name="card_stroke2">#E7E0EC</color>
+
+    //product item
+    <color name="primaryDark">#1A237E</color>
+    <color name="primaryText">#E53935</color> <!-- Red for price -->
+    <color name="secondaryText">#757575</color>
+    <color name="discount_text">#E53935</color>
+    <color name="discount_stroke">#FFCDD2</color>
+    <color name="card_stroke">#EEEEEE</color>
+
+    <color name="lightGray">#F5F5F5</color>
+    <color name="accentColor">#FF5722</color>
+
+
+
+
+</resources>

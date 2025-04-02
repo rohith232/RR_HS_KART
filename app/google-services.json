@@ -1,0 +1,67 @@
+{
+  "project_info": {
+    "project_number": "453502187365",
+    "project_id": "hscart-40c24",
+    "storage_bucket": "hscart-40c24.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:453502187365:android:7ebcf0a98426fcac2a138c",
+        "android_client_info": {
+          "package_name": "com.example.hs_cart"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB9s2PjyLSNlZdNw0O7tSDKMcrlfS0AYh8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:453502187365:android:720233b223a6669d2a138c",
+        "android_client_info": {
+          "package_name": "com.example.hs_kart"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB9s2PjyLSNlZdNw0O7tSDKMcrlfS0AYh8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:453502187365:android:bb8ad5d105afe32e2a138c",
+        "android_client_info": {
+          "package_name": "com.example.hs_kartadmin"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB9s2PjyLSNlZdNw0O7tSDKMcrlfS0AYh8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
