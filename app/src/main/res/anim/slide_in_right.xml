@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Background fade-in -->
+    <alpha
+        android:duration="150"
+        android:fromAlpha="0.0"
+        android:toAlpha="0.7"
+        android:interpolator="@android:anim/accelerate_interpolator"/>
+
+    <!-- Slide animation -->
+    <translate
+        android:duration="400"
+        android:fromXDelta="100%"
+        android:toXDelta="0%"
+        android:interpolator="@android:anim/decelerate_interpolator"/>
+
+    <!-- Background fade-out -->
+    <alpha
+        android:startOffset="150"
+        android:duration="250"
+        android:fromAlpha="0.7"
+        android:toAlpha="0.0"
+        android:interpolator="@android:anim/decelerate_interpolator"/>
+</set>
