@@ -40,6 +40,11 @@ class RegisterActivity1 : AppCompatActivity() {
                 registerUser(email, password, name, phone)
             }
         }
+        binding.signin.setOnClickListener {
+            // In your current activity
+            val intent=Intent(this,LoginActivity1::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun validateInputs(email: String, password: String, name: String, phone: String): Boolean {
