@@ -64,11 +64,14 @@ dependencies {
 
     // Firebase BoM (Bill of Materials) - manages all Firebase library versions
     implementation(platform("com.google.firebase:firebase-bom:32.7.3"))
-    implementation("com.google.firebase:firebase-analytics")
+
+    // Firebase dependencies (use versions from BoM)
+    implementation("com.google.firebase:firebase-analytics-ktx")
     implementation("com.google.firebase:firebase-auth-ktx")
+    implementation("com.google.firebase:firebase-database-ktx") // Remove duplicate
     implementation("com.google.firebase:firebase-firestore-ktx")
     implementation("com.google.firebase:firebase-storage-ktx")
-    implementation("com.google.firebase:firebase-appcheck")
+    implementation("com.google.firebase:firebase-appcheck-ktx")
     implementation("com.google.firebase:firebase-appcheck-debug")
 
     // Play Services
@@ -100,5 +103,5 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
-    implementation ("com.google.android.material:material:1.6.0")
+    implementation ("de.hdodenhof:circleimageview:3.1.0")
 }

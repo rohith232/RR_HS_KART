@@ -15,6 +15,7 @@ import com.bumptech.glide.Glide
 import com.example.hs_kart.R
 import com.example.hs_kart.activity.AllProductsActivity
 import com.example.hs_kart.activity.CategoryActivity1
+import com.example.hs_kart.activity.ProfileActivity
 import com.example.hs_kart.adapter.CategoryAdapter
 import com.example.hs_kart.adapter.ProductAdapter
 import com.example.hs_kart.adapter.SliderAdapter
@@ -54,6 +55,11 @@ class HomeFragment : Fragment() {
         }
         binding.seeall1.setOnClickListener {
             val intent = Intent(requireContext(), AllProductsActivity::class.java)
+            startActivity(intent)
+            requireActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+        }
+        binding.menuIcon.setOnClickListener {
+            val intent = Intent(requireContext(), ProfileActivity::class.java)
             startActivity(intent)
             requireActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
         }

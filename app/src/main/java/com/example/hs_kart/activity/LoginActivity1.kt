@@ -15,11 +15,10 @@ import com.google.firebase.ktx.Firebase
 class LoginActivity1 : AppCompatActivity() {
     private lateinit var binding: ActivityLogin1Binding
     private lateinit var auth: FirebaseAuth
-    lateinit var register:Button
+    private lateinit var registerButton: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
 
         // Initialize Firebase Auth
         auth = Firebase.auth
@@ -34,6 +33,8 @@ class LoginActivity1 : AppCompatActivity() {
         binding = ActivityLogin1Binding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        registerButton = binding.registerButton // Initialize using view binding
+
         binding.loginButton.setOnClickListener {
             val email = binding.emailEditText.text.toString()
             val password = binding.passwordEditText.text.toString()
@@ -42,21 +43,27 @@ class LoginActivity1 : AppCompatActivity() {
                 auth.signInWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this) { task ->
                         if (task.isSuccessful) {
-                            // Sign in success, update UI with the signed-in user's information
                             startActivity(Intent(this, MainActivity::class.java))
                             finish()
                         } else {
-                            Toast.makeText(this, "Authentication Failed!", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(
+                                this,
+                                "Authentication Failed: ${task.exception?.message}",
+                                Toast.LENGTH_SHORT
+                            ).show()
                         }
                     }
             } else {
-                Toast.makeText(this, "Please enter email and password", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    this,
+                    "Please enter email and password",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
-        //navigate to register
-        register=findViewById(R.id.registerButton)
 
-        register.setOnClickListener { startActivity(Intent(this, RegisterActivity1::class.java)) }
-
+        registerButton.setOnClickListener {
+            startActivity(Intent(this, RegisterActivity1::class.java))
+        }
     }
 }

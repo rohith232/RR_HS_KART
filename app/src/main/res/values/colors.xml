@@ -54,7 +54,8 @@
     <color name="grey_200">#EEEEEE</color>
     <color name="error_red">#F44336</color>
     <color name="primaryDarkColor">#3700B3</color>
-
+    <color name="blue">#0000FF</color>
+    <color name="light_gray">#BFBEBE</color>
     <!-- Card Colors -->
     <color name="card_background">#FFFFFF</color>
 
@@ -72,7 +73,6 @@
 
     <!-- Background -->
     <color name="background_gradient">#F8F9FA</color>
-    <color name="surface_container">#FFFFFF</color>
     <color name="outline_variant">#E0E0E0</color>
 
     <!-- Primary Colors -->
@@ -116,7 +116,24 @@
     <color name="add_to_cart_icon">#5C6BC0</color>
     <color name="add_to_cart_stroke">#1A5C6BC0</color>
 
+    <!-- Material 3 Color System -->
+    <color name="surface_container_low">#F0F0F0</color>
+    <color name="surface_container_high">#EBEBEB</color>
+    <color name="surface">#FFFFFF</color>
+    <color name="on_surface">#1A1A1A</color>
+    <color name="on_surface_variant">#666666</color>
+    <color name="primary">#6750A4</color>
+    <color name="on_primary">#FFFFFF</color>
 
+    <!-- Material 3 Color System -->
+    <color name="surface_container">#F5F5F5</color>
+    <color name="primary_container">#EADDFF</color>
+    <color name="on_primary_container">#21005D</color>
+    <color name="error">#B3261E</color>
+
+
+
+    <color name="background_gray">#F5F5F5</color>
 
 
 

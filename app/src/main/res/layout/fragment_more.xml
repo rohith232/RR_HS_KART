@@ -88,14 +88,15 @@
                 <ImageView
                     android:layout_width="24dp"
                     android:layout_height="24dp"
-                    android:src="@drawable/ic_help"
+                    android:src="@drawable/ic_profile_placeholder"
                     android:tint="@color/primaryColor"
                     tools:ignore="UseAppTint" />
 
                 <TextView
+                    android:id="@+id/profile"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/browse_faqs"
+                    android:text="Profile Settings"
                     android:textSize="16sp"
                     android:layout_marginStart="16dp"
                     android:textColor="@color/text_primary"/>

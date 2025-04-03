@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:background="@color/lightGray">
+    android:background="@color/surface_container">
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainer"
@@ -14,21 +14,23 @@
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/bottomBar"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        app:navGraph="@navigation/nav"
-        tools:layout_editor_absoluteX="-114dp" />
+        app:navGraph="@navigation/nav" />
 
     <me.ibrahimsn.lib.SmoothBottomBar
         android:id="@+id/bottomBar"
         android:layout_width="match_parent"
-        android:layout_height="56dp"
-        app:iconMargin="8dp"
-        app:iconSize="28dp"
-        app:indicatorRadius="15dp"
-        app:backgroundColor="@color/gray_600"
-        app:badgeColor="@color/accentColor"
+        android:layout_height="64dp"
+        app:iconMargin="12dp"
+        app:iconSize="26dp"
+        app:indicatorRadius="16dp"
+        app:indicatorColor="@color/blue"
+        app:backgroundColor="@color/light_gray"
+        app:itemIconTint="@drawable/bottom_nav_icon_colors"
+        app:itemTextColor="@drawable/bottom_nav_text_colors"
+        app:badgeColor="@color/error"
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/bottom_nav"
+        android:elevation="8dp"
         android:contentDescription="Bottom Navigation Bar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

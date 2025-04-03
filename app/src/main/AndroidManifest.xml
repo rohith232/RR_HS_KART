@@ -20,6 +20,9 @@
         android:theme="@style/Theme.HS_KART"
         tools:targetApi="31">
         <activity
+            android:name=".activity.ProfileActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.AllProductsActivity"
             android:exported="false" />
         <activity

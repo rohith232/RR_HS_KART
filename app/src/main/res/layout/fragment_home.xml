@@ -5,50 +5,54 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/background"
+    android:background="@color/surface_container"
     android:padding="16dp"
     tools:context=".fragment.HomeFragment">
 
-    <!-- Menu TextView -->
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="12dp">
-
-        <TextView
-            android:id="@+id/menuTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Your Products in HS Cart 🎉🎉"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:textColor="@color/section_title"
-            android:layout_alignParentStart="true"/>
-
-        <ImageView
-            android:id="@+id/menuIcon"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_alignParentEnd="true"
-            android:src="@drawable/shopp"
-            android:contentDescription="Menu Icon"/>
-    </RelativeLayout>
-
-    <!-- Search Bar -->
+    <!-- App Bar with Title and Icon -->
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="24dp"
-        app:cardElevation="2dp"
-        app:strokeColor="@color/card_stroke"
-        app:strokeWidth="0.5dp"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="0dp"
+        app:cardBackgroundColor="@color/surface_container_low"
+        app:strokeColor="@color/outline_variant"
+        app:strokeWidth="1dp"
         android:layout_marginBottom="16dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/menuTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Your Products in HS Cart 🎉🎉"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:textColor="@color/on_surface"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"/>
+
+            <ImageView
+                android:id="@+id/menuIcon"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/ic_profile_placeholder"
+                android:contentDescription="Menu Icon"
+                android:foregroundTint="@color/gray_600"
+                tools:ignore="UseAppTint" />
+        </RelativeLayout>
     </com.google.android.material.card.MaterialCardView>
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true">
+        android:fillViewport="true"
+        android:overScrollMode="never">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -58,35 +62,44 @@
             <!-- Hero Banner with ViewPager2 -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
-                android:layout_height="180dp"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="4dp"
-                app:strokeColor="@color/card_stroke"
+                android:layout_height="200dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="2dp"
+                app:cardBackgroundColor="@color/surface_container_high"
+                app:strokeColor="@color/outline_variant"
                 app:strokeWidth="0.5dp"
                 android:layout_marginBottom="24dp">
 
-                <!-- ViewPager2 should match the size of the MaterialCardView -->
                 <androidx.viewpager2.widget.ViewPager2
                     android:id="@+id/sliderViewPager"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:clipChildren="false"
                     android:clipToPadding="false"
-                    android:padding="0dp" />
+                    android:padding="0dp"/>
+
+                <com.google.android.material.tabs.TabLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|center_horizontal"
+                    android:layout_marginBottom="8dp"
+                    app:tabBackground="@drawable/dot_indicator"
+                    app:tabGravity="center"
+                    app:tabIndicatorHeight="0dp"/>
             </com.google.android.material.card.MaterialCardView>
 
             <!-- Category Section -->
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp">
+                android:layout_marginBottom="12dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/section_title"
+                    android:textColor="@color/on_surface"
                     android:textStyle="bold"
-                    android:textSize="18sp"
+                    android:textSize="20sp"
                     android:text="Shop by category"
                     android:layout_alignParentStart="true"/>
 
@@ -94,20 +107,24 @@
                     android:id="@+id/seeall"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/primaryDark"
+                    android:textColor="@color/primary"
                     android:textSize="14sp"
                     android:text="See All"
                     android:layout_alignParentEnd="true"
                     android:drawableEnd="@drawable/ic_chevron_right"
-                    android:drawableTint="@color/primaryDark"
-                    android:drawablePadding="4dp"/>
+                    android:drawableTint="@color/primary"
+                    android:drawablePadding="4dp"
+                    android:paddingVertical="4dp"/>
             </RelativeLayout>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/categoryRecycler"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+                android:layout_marginBottom="24dp"
+                android:clipToPadding="false"
+                android:paddingStart="4dp"
+                android:paddingEnd="4dp"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 android:orientation="horizontal"
                 tools:listitem="@layout/layout_category_item"/>
@@ -116,14 +133,14 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32dp">
+                android:layout_marginBottom="12dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/section_title"
+                    android:textColor="@color/on_surface"
                     android:textStyle="bold"
-                    android:textSize="18sp"
+                    android:textSize="20sp"
                     android:text="Suggested Products"
                     android:layout_alignParentStart="true"/>
 
@@ -131,20 +148,22 @@
                     android:id="@+id/seeall1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/primaryDark"
+                    android:textColor="@color/primary"
                     android:textSize="14sp"
                     android:text="See All"
                     android:layout_alignParentEnd="true"
                     android:drawableEnd="@drawable/ic_chevron_right"
-                    android:drawableTint="@color/primaryDark1"
-                    android:drawablePadding="4dp"/>
+                    android:drawableTint="@color/primary"
+                    android:drawablePadding="4dp"
+                    android:paddingVertical="4dp"/>
             </RelativeLayout>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/productRecycler"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+                android:clipToPadding="false"
+                android:paddingBottom="80dp"
                 app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                 app:spanCount="1"
                 android:nestedScrollingEnabled="false"
