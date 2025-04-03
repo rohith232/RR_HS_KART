@@ -19,7 +19,7 @@
             android:id="@+id/menuTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Your Products in HS Cart 🎉🎉🎉"
+            android:text="Your Products in HS Cart 🎉🎉"
             android:textSize="18sp"
             android:textStyle="bold"
             android:textColor="@color/section_title"
@@ -91,6 +91,7 @@
                     android:layout_alignParentStart="true"/>
 
                 <TextView
+                    android:id="@+id/seeall"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/primaryDark"
@@ -127,6 +128,7 @@
                     android:layout_alignParentStart="true"/>
 
                 <TextView
+                    android:id="@+id/seeall1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/primaryDark"

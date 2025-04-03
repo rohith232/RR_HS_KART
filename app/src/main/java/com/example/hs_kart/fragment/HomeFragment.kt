@@ -1,5 +1,6 @@
 package com.example.hs_kart.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -7,9 +8,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityOptionsCompat
+import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.hs_kart.R
+import com.example.hs_kart.activity.AllProductsActivity
+import com.example.hs_kart.activity.CategoryActivity1
 import com.example.hs_kart.adapter.CategoryAdapter
 import com.example.hs_kart.adapter.ProductAdapter
 import com.example.hs_kart.adapter.SliderAdapter
@@ -31,6 +36,8 @@ class HomeFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentHomeBinding.inflate(layoutInflater)
+        // Initialize views and click listeners
+        initViews()
 
         val preference = requireContext().getSharedPreferences("info", AppCompatActivity.MODE_PRIVATE)
         if(preference.getBoolean("isCart",false))
@@ -40,6 +47,44 @@ class HomeFragment : Fragment() {
         getProducts()
         return binding.root
     }
+    private fun initViews() {
+        // Set click listener for the "View All Categories" text
+        binding.seeall.setOnClickListener {
+            navigateToCategoryActivity()
+        }
+        binding.seeall1.setOnClickListener {
+            val intent = Intent(requireContext(), AllProductsActivity::class.java)
+            startActivity(intent)
+            requireActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+        }
+    }
+    private fun navigateToCategoryActivity() {
+        val intent = Intent(requireContext(), CategoryActivity1::class.java)
+
+        // Create a transition bundle
+        val options = ActivityOptionsCompat.makeCustomAnimation(
+            requireContext(),
+            R.anim.slide_in_right,  // enter animation
+            R.anim.slide_out_left   // exit animation
+        ).toBundle()
+
+        // Apply the transition theme
+        requireActivity().setTheme(R.style.TransitionTheme)
+
+        // Start activity with transition
+        startActivity(intent, options)
+
+        // Reset theme after transition
+        requireActivity().setTheme(R.style.Base_Theme_HS_KART)
+    }
+
+//    private fun navigateToCategoryActivity() {
+//        val intent = Intent(requireContext(), CategoryActivity1::class.java)
+//        startActivity(intent)
+//
+//        // Optional: Add activity transition animation
+//        requireActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+//    }
     private fun getSliderImage() {
         val sliderImages = ArrayList<String>()
 

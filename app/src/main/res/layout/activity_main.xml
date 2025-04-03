@@ -25,7 +25,7 @@
         app:iconMargin="8dp"
         app:iconSize="28dp"
         app:indicatorRadius="15dp"
-        app:backgroundColor="@color/green"
+        app:backgroundColor="@color/gray_600"
         app:badgeColor="@color/accentColor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/bottom_nav"
