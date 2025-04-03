@@ -8,6 +8,8 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.navigation.fragment.findNavController
+import com.example.hs_kart.MainActivity
 import com.example.hs_kart.R
 import com.example.hs_kart.databinding.ActivityAddressBinding
 import com.google.firebase.auth.FirebaseAuth
@@ -33,7 +35,18 @@ class AddressActivity : AppCompatActivity() {
 
 
         loadUserInfo()
-
+        binding.btnBack.setOnClickListener {
+            onBackPressedDispatcher.onBackPressed() // Or finish()
+        }
+        binding.btnCart.setOnClickListener {
+            // Navigate to cart
+            val intent = Intent(this, MainActivity::class.java).apply {
+                putExtra("openCart", true)
+                flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+            }
+            startActivity(intent)
+            finish()
+        }
         binding.proceed.setOnClickListener{
             validateData(
                 binding.userNumber.text.toString(),
@@ -47,7 +60,6 @@ class AddressActivity : AppCompatActivity() {
 
 
     }
-
     private fun validateData(number: String,name: String,pinCode:String,city:String,state:String,village:String) {
         if(number.isEmpty() || state.isEmpty() || name.isEmpty() || city.isEmpty() || pinCode.isEmpty()){
             Toast.makeText(this,"Please fill all fields",Toast.LENGTH_LONG).show()
