@@ -29,5 +29,18 @@
         android:id="@+id/moreFragment"
         android:name="com.example.hs_kart.fragment.MoreFragment"
         android:label="fragment_more"
-        tools:layout="@layout/fragment_more" />
+        tools:layout="@layout/fragment_more" >
+        <action
+            android:id="@+id/action_moreFragment_to_orderDetailsFragment"
+            app:destination="@+id/orderDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/orderDetailsFragment"
+        android:name="com.example.hs_kart.fragment.OrderDetailsFragment"
+        android:label="My Orders"
+        tools:layout="@layout/fragment_order_details" >
+        <action
+            android:id="@+id/action_to_cart"
+            app:destination="@+id/cartFragment" />
+    </fragment>
 </navigation>

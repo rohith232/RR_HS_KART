@@ -1,10 +1,10 @@
 package com.example.hs_kart.model
 
 data class AllOrderModel(
-    val name:String?="",
-    val orderId:String?="",
+    var name:String?="",
+    var orderId:String?="",
     val userId:String?="",
-    val status:String?="",
+    var status:String?="",
     val productId:String?="",
-    val price:String?="",
+    var price:String?="",
 )

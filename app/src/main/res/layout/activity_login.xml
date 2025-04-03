@@ -1,65 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
     tools:context=".activity.LoginActivity">
 
-
-    <ImageView
-        android:id="@+id/imageView6"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
-        android:layout_marginTop="24dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_undraw_login" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Login with Mobile"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:layout_marginBottom="32dp"/>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout"
-        style="@style/ThemeOverlay.Material3.TextInputEditText.OutlinedBox"
-        android:layout_width="409dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/imageView6"
-        tools:layout_editor_absoluteX="1dp"
-        tools:ignore="MissingConstraints">
+        android:layout_marginBottom="16dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/userNumber"
+            android:id="@+id/etPhoneNumber"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Phone Number" />
-
+            android:hint="Mobile Number"
+            android:inputType="phone"
+            android:maxLength="10"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/button3"
+        android:id="@+id/btnSendOtp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="24dp"
-        android:text="Signin"
-        android:textAllCaps="false"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
+        android:text="Send OTP"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
 
-    <com.google.android.material.button.MaterialButton
-        style="@style/Widget.Material3.Button.OutlinedButton"
-        android:id="@+id/button4"
+    <LinearLayout
+        android:id="@+id/otpLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="24dp"
-        android:text="Signup"
-        android:textAllCaps="false"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button3" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:layout_marginTop="16dp">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etOtp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="OTP"
+                android:inputType="number"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnVerifyOtp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Verify OTP"
+            style="@style/Widget.MaterialComponents.Button"/>
+    </LinearLayout>
+</LinearLayout>

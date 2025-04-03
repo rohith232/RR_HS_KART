@@ -48,7 +48,7 @@ class CartFragment : Fragment() {
     }
     private fun totalCost(data: List<ProductModel>?) {
         if (data.isNullOrEmpty()) {
-            binding.textView12.text = "Total item in cart is: 0"
+            binding.textView12.text = "(Total item: 0)"
             binding.textView13.text = "Total Cost: 0"
             return
         }
@@ -59,8 +59,8 @@ class CartFragment : Fragment() {
             cleanedPrice.toInt()  // Now parse it safely to an integer
         }
 
-        binding.textView12.text = "Total item in cart is: ${data.size}"
-        binding.textView13.text = "Total Cost: ₹$total"  // You can format it here to include currency symbol
+        binding.textView12.text = "(${data.size})"
+        binding.textView13.text = "Total Amount: ₹$total"  // You can format it here to include currency symbol
 
         binding.checkout.setOnClickListener {
             val intent = Intent(requireContext(), AddressActivity::class.java)

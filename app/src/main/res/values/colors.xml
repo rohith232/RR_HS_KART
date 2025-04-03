@@ -35,6 +35,60 @@
     <color name="lightGray">#F5F5F5</color>
     <color name="accentColor">#FF5722</color>
 
+    <color name="teal_500">#008577</color>
+    <color name="teal_700">#00574B</color>
+    <color name="gray_200">#EEEEEE</color>
+    <color name="gray_600">#757575</color>
+
+    <!-- Status Colors -->
+    <color name="status_ordered">#FFA000</color>  <!-- Amber 700 -->
+    <color name="status_dispatched">#1976D2</color>  <!-- Blue 700 -->
+    <color name="status_delivered">#388E3C</color>  <!-- Green 700 -->
+    <color name="status_canceled">#D32F2F</color>  <!-- Red 700 -->
+
+    <!-- Text/BG Colors -->
+    <color name="status_text_light">#FFFFFF</color>  <!-- White -->
+    <color name="status_bg_alpha">#33FFFFFF</color>  <!-- 20% opacity white -->
+    <color name="background_grey">#F5F5F5</color>
+    <color name="primaryColor">#6200EE</color>
+    <color name="text_primary">#212121</color>
+    <color name="white_alpha_70">#B3FFFFFF</color>
+    <color name="grey_200">#EEEEEE</color>
+    <color name="error_red">#F44336</color>
+    <color name="primaryDarkColor">#3700B3</color>
+
+    <!-- Card Colors -->
+    <color name="card_background">#FFFFFF</color>
+
+    <!-- Text Colors -->
+    <color name="text_secondary">#757575</color>
+
+    <!-- Icon Color -->
+    <color name="icon_tint">#F44336</color> <!-- Red for delete action -->
+    <!-- Background -->
+
+
+
+    <!-- Primary Color -->
+    <color name="primary_color">#6200EE</color> <!-- Purple 500 -->
+
+    <!-- Background -->
+    <color name="background_gradient">#F8F9FA</color>
+    <color name="surface_container">#FFFFFF</color>
+    <color name="outline_variant">#E0E0E0</color>
+
+    <!-- Primary Colors -->
+    <color name="primary_dark">#1A237E</color>
+    <color name="primary_light">#9FA8DA</color>
+
+    <!-- Accent Colors -->
+    <color name="accent_color">#FF5722</color>
+    <color name="accent_light">#FFCCBC</color>
+    <color name="on_accent">#FFFFFF</color>
+
+
+
+
 
 
 

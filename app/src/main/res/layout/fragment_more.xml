@@ -1,15 +1,150 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/background_grey"
     tools:context=".fragment.MoreFragment">
 
-    <androidx.recyclerview.widget.RecyclerView
+    <!-- User Profile Section -->
+    <LinearLayout
+        android:id="@+id/userSection"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/recyclerView"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:background="@drawable/bg_user_section">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/tvUserEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp"/>
+
+    </LinearLayout>
+
+    <!-- Options List -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/userSection"
+        android:orientation="vertical"
+        android:layout_marginTop="16dp"
+        android:paddingHorizontal="16dp">
+
+        <!-- My Orders Card -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/btnOrderDetails"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="2dp"
+            app:strokeColor="@color/grey_200"
+            app:strokeWidth="1dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/orde"
+                    android:tint="@color/primaryColor"
+                    tools:ignore="UseAppTint" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/my_orders"
+                    android:textSize="16sp"
+                    android:layout_marginStart="16dp"
+                    android:textColor="@color/text_primary"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- FAQs Card -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardFAQs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="2dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_help"
+                    android:tint="@color/primaryColor"
+                    tools:ignore="UseAppTint" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/browse_faqs"
+                    android:textSize="16sp"
+                    android:layout_marginStart="16dp"
+                    android:textColor="@color/text_primary"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Terms Card -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardTerms"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="2dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_terms"
+                    android:tint="@color/primaryColor"
+                    tools:ignore="UseAppTint" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/terms_policies"
+                    android:textSize="16sp"
+                    android:layout_marginStart="16dp"
+                    android:textColor="@color/text_primary"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+    </LinearLayout>
+
+    <!-- Logout Button -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnLogout"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="16dp"
+        android:text="@string/logout"
+        android:textColor="@color/error_red"
+        app:strokeColor="@color/error_red"
+        app:strokeWidth="1dp"/>
+</RelativeLayout>

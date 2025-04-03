@@ -1,45 +1,48 @@
 package com.example.hs_kart.fragment
 
+import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.content.Context.MODE_PRIVATE
-import androidx.recyclerview.widget.RecyclerView
+import android.widget.Toast
+import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.example.hs_kart.R
-import com.example.hs_kart.adapter.AllOrderAdapter
+import com.example.hs_kart.activity.LoginActivity1
 import com.example.hs_kart.databinding.FragmentMoreBinding
-import com.example.hs_kart.model.AllOrderModel
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
-
+import com.google.firebase.auth.FirebaseAuth
 
 class MoreFragment : Fragment() {
+    private lateinit var binding: FragmentMoreBinding
+    private val auth = FirebaseAuth.getInstance()
 
-    private lateinit var binding:FragmentMoreBinding
-    private lateinit var list:ArrayList<AllOrderModel>
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        binding=FragmentMoreBinding.inflate(layoutInflater)
-        list=ArrayList()
-
-        val preferences=requireContext().getSharedPreferences("user", MODE_PRIVATE)
-
-        Firebase.firestore.collection("allOrders").whereEqualTo("userId",preferences.getString("number","")!!)
-            .get().addOnSuccessListener {
-            list.clear()
-            for (doc in it){
-                val data=doc.toObject(AllOrderModel::class.java)
-                list.add(data)
-            }
-            binding.recyclerView.adapter= AllOrderAdapter(list,requireContext())
-        }
+    ): View {
+        binding = FragmentMoreBinding.inflate(inflater, container, false)
+        setupViews()
         return binding.root
     }
 
+    private fun setupViews() {
+        auth.currentUser?.email?.let { email ->
+            binding.tvUserEmail.text = getString(R.string.welcome_user, email)
+        } ?: run {
+            binding.tvUserEmail.text = getString(R.string.guest_user)
+        }
+
+        binding.btnLogout.setOnClickListener {
+            auth.signOut()
+            startActivity(Intent(requireContext(), LoginActivity1::class.java))
+            requireActivity().finish()
+            Toast.makeText(requireContext(), R.string.logged_out_success, Toast.LENGTH_SHORT).show()
+        }
+
+        binding.btnOrderDetails.setOnClickListener {
+            findNavController().navigate(R.id.action_moreFragment_to_orderDetailsFragment)
+        }
+    }
 }

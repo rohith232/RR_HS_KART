@@ -17,6 +17,7 @@ android {
         versionCode = 1
         versionName = "1.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
     }
 
     buildTypes {
@@ -44,59 +45,57 @@ android {
 }
 
 dependencies {
-    val nav_version = "2.7.7"
-    val room_version = "2.6.1"
-
     // Core AndroidX
     implementation("androidx.core:core-ktx:1.13.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.11.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+    implementation("androidx.activity:activity-ktx:1.8.2")
+    implementation("androidx.annotation:annotation:1.7.1")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.7.0")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0")
+    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
 
     // Navigation Component
+    val nav_version = "2.7.7"
     implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
     implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
 
-    // SmoothBottomBar
-    implementation("com.github.ibrahimsn98:SmoothBottomBar:1.7.9")
-
-    // ✅ Use only one Firebase BoM to manage versions
+    // Firebase BoM (Bill of Materials) - manages all Firebase library versions
     implementation(platform("com.google.firebase:firebase-bom:32.7.3"))
-
-    // Required Firebase services (no need to add versions explicitly)
     implementation("com.google.firebase:firebase-analytics")
-    implementation("com.google.firebase:firebase-auth")
-    implementation("com.google.firebase:firebase-storage")
-    implementation("com.google.firebase:firebase-firestore")
+    implementation("com.google.firebase:firebase-auth-ktx")
     implementation("com.google.firebase:firebase-firestore-ktx")
+    implementation("com.google.firebase:firebase-storage-ktx")
+    implementation("com.google.firebase:firebase-appcheck")
+    implementation("com.google.firebase:firebase-appcheck-debug")
 
-    // Image Slideshow
+    // Play Services
+    implementation("com.google.android.gms:play-services-auth:20.7.0")
+    implementation("com.google.android.play:integrity:1.2.0")
+
+    // UI Libraries
+    implementation("com.github.ibrahimsn98:SmoothBottomBar:1.7.9")
     implementation("com.github.denzcoskun:ImageSlideshow:0.1.2")
 
-    // Glide (for image loading)
+    // Image Loading
     implementation("com.github.bumptech.glide:glide:4.16.0")
-    annotationProcessor("com.github.bumptech.glide:compiler:4.16.0")
+    kapt("com.github.bumptech.glide:compiler:4.16.0")
 
-    // Room Database
+    // Database
+    val room_version = "2.6.1"
     implementation("androidx.room:room-runtime:$room_version")
     kapt("androidx.room:room-compiler:$room_version")
     implementation("androidx.room:room-ktx:$room_version")
 
-    // Coroutines (use a stable version)
+    // Coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
 
-    // Razorpay Payment Gateway
+    // Payment
     implementation("com.razorpay:checkout:1.6.40")
 
-    // Testing Libraries
+    // Testing
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
-
-
-
-    //modify
-    implementation ("com.google.android.gms:play-services-base:18.1.0")
-   // implementation ("com.google.android.play:core:1.10.0")
-
 }

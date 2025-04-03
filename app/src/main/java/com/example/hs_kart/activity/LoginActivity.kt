@@ -2,81 +2,92 @@ package com.example.hs_kart.activity
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.example.hs_kart.MainActivity
 import com.example.hs_kart.databinding.ActivityLoginBinding
+import com.google.firebase.FirebaseApp
 import com.google.firebase.FirebaseException
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.PhoneAuthCredential
-import com.google.firebase.auth.PhoneAuthOptions
-import com.google.firebase.auth.PhoneAuthProvider
+import com.google.firebase.auth.*
 import java.util.concurrent.TimeUnit
 
 class LoginActivity : AppCompatActivity() {
+
     private lateinit var binding: ActivityLoginBinding
-    private lateinit var builder: AlertDialog
+    private lateinit var auth: FirebaseAuth
+    private lateinit var verificationId: String
+    private lateinit var resendToken: PhoneAuthProvider.ForceResendingToken
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = ActivityLoginBinding.inflate(layoutInflater)
-        enableEdgeToEdge()
         setContentView(binding.root)
+        auth = FirebaseAuth.getInstance()
 
-        // Initialize the builder here
-        builder = AlertDialog.Builder(this)
-            .setTitle("Loading...")
-            .setMessage("Please Wait")
-            .setCancelable(false)
-            .create()
-
-        binding.button4.setOnClickListener {
-            startActivity(Intent(this, RegisterActivity::class.java))
-            finish()
+        binding.btnSendOtp.setOnClickListener {
+            val phoneNumber = binding.etPhoneNumber.text.toString().trim()
+            if (phoneNumber.isNotEmpty()) {
+                sendVerificationCode("+91$phoneNumber") // Change country code as needed
+            } else {
+                Toast.makeText(this, "Enter mobile number", Toast.LENGTH_SHORT).show()
+            }
         }
 
-        binding.button3.setOnClickListener {
-            if (binding.userNumber.text!!.isEmpty())
-                Toast.makeText(this, "Please provide number", Toast.LENGTH_SHORT).show()
-            else
-                sendOtp(binding.userNumber.text.toString())
+        binding.btnVerifyOtp.setOnClickListener {
+            val otp = binding.etOtp.text.toString().trim()
+            if (otp.isNotEmpty()) {
+                verifyCode(otp)
+            } else {
+                Toast.makeText(this, "Enter OTP", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
-    private fun sendOtp(number: String) {
-        builder.show()
+    private fun sendVerificationCode(phoneNumber: String) {
+        val options = PhoneAuthOptions.newBuilder(auth)
+            .setPhoneNumber(phoneNumber)
+            .setTimeout(60L, TimeUnit.SECONDS)
+            .setActivity(this)
+            .setCallbacks(object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
+                override fun onVerificationCompleted(credential: PhoneAuthCredential) {
+                    signInWithPhoneAuthCredential(credential)
+                }
 
-        val options = PhoneAuthOptions.newBuilder(FirebaseAuth.getInstance())
-            .setPhoneNumber("+91$number") // Phone number to verify
-            .setTimeout(60L, TimeUnit.SECONDS) // Timeout and unit
-            .setActivity(this) // Activity (for callback binding)
-            .setCallbacks(callbacks) // OnVerificationStateChangedCallbacks
+                override fun onVerificationFailed(e: FirebaseException) {
+                    Toast.makeText(this@LoginActivity, "Verification failed: ${e.message}", Toast.LENGTH_LONG).show()
+                }
+
+                override fun onCodeSent(
+                    id: String,
+                    token: PhoneAuthProvider.ForceResendingToken
+                ) {
+                    verificationId = id
+                    resendToken = token
+                    binding.otpLayout.visibility = View.VISIBLE
+                    binding.btnSendOtp.visibility = View.GONE
+                    Toast.makeText(this@LoginActivity, "OTP sent successfully", Toast.LENGTH_SHORT).show()
+                }
+            })
             .build()
         PhoneAuthProvider.verifyPhoneNumber(options)
     }
 
-    private val callbacks = object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
+    private fun verifyCode(code: String) {
+        val credential = PhoneAuthProvider.getCredential(verificationId, code)
+        signInWithPhoneAuthCredential(credential)
+    }
 
-        override fun onVerificationCompleted(credential: PhoneAuthCredential) {
-            builder.dismiss() // Dismiss dialog on success
-        }
-
-        override fun onVerificationFailed(e: FirebaseException) {
-            builder.dismiss() // Dismiss dialog on failure
-            Toast.makeText(this@LoginActivity, "Verification failed: ${e.message}", Toast.LENGTH_SHORT).show()
-        }
-
-        override fun onCodeSent(
-            verificationId: String,
-            token: PhoneAuthProvider.ForceResendingToken,
-        ) {
-            builder.dismiss()
-            val intent = Intent(this@LoginActivity, OTPActivity::class.java)
-            intent.putExtra("verificationId", verificationId)
-            intent.putExtra("number", binding.userNumber.text.toString())
-            startActivity(intent)
-        }
+    private fun signInWithPhoneAuthCredential(credential: PhoneAuthCredential) {
+        auth.signInWithCredential(credential)
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    // Login successful
+                    startActivity(Intent(this, MainActivity::class.java))
+                    finish()
+                } else {
+                    Toast.makeText(this, "Authentication failed: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
+                }
+            }
     }
 }

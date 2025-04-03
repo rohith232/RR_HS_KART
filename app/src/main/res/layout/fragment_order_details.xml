@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="50dp"
+    tools:context=".fragment.OrderDetailsFragment">
+
+    <!-- Header Layout -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:background="@color/white"
+        android:elevation="4dp">
+
+        <!-- Back Arrow -->
+        <ImageView
+            android:id="@+id/ivBackArrow"
+            android:layout_width="34dp"
+            android:layout_height="26dp"
+            android:src="@drawable/ic_arrow_back"
+            android:contentDescription="@string/back_button"
+            app:tint="@color/black" />
+
+        <!-- Title -->
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/my_orders"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:layout_marginHorizontal="16dp"/>
+
+        <!-- Cart Icon -->
+        <ImageView
+            android:id="@+id/ivCart"
+            android:layout_width="38dp"
+            android:layout_height="28dp"
+            android:contentDescription="@string/cart_icon"
+            android:src="@drawable/carto" />
+    </LinearLayout>
+
+    <!-- SwipeRefreshLayout (positioned below header) -->
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="56dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <!-- Main container with states -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <!-- ProgressBar (centered) -->
+            <ProgressBar
+                android:id="@+id/progressBar"
+                style="?android:attr/progressBarStyleLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:visibility="gone"/>
+
+            <!-- Empty state text -->
+            <TextView
+                android:id="@+id/tvNoOrders"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:padding="16dp"
+                android:text="@string/no_orders_found"
+                android:textColor="@color/gray_500"
+                android:textSize="18sp"
+                android:visibility="gone"/>
+
+            <!-- RecyclerView -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipToPadding="false"
+                android:paddingBottom="16dp"
+                android:visibility="visible"
+                tools:listitem="@layout/item_order"/>
+        </RelativeLayout>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+</FrameLayout>
