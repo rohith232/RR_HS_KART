@@ -13,7 +13,7 @@ import com.example.hs_kart.activity.CategoryActivity
 import com.example.hs_kart.databinding.LayoutCategoryItemBinding
 import com.example.hs_kart.model.CategoryModel
 
-class CategoryAdapter(var context: Context, var list: ArrayList<CategoryModel>):RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>() {
+class CategoryAdapter(var context: Context, var list: List<CategoryModel>):RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>() {
     inner class CategoryViewHolder(view: View):RecyclerView.ViewHolder(view){
         var binding=LayoutCategoryItemBinding.bind(view)
     }

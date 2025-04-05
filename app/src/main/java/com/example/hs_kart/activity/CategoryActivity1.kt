@@ -3,10 +3,8 @@ package com.example.hs_kart.activity
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
-import com.example.hs_kart.R
 import com.example.hs_kart.adapter.CategoryAdapter
 import com.example.hs_kart.databinding.ActivityCategory1Binding
-import com.example.hs_kart.databinding.ActivityCategoryBinding
 import com.example.hs_kart.model.CategoryModel
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase

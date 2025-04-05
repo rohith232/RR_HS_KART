@@ -3,7 +3,6 @@ package com.example.hs_kart.activity
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
-import com.example.hs_kart.R
 import com.example.hs_kart.adapter.ProductAdapter
 import com.example.hs_kart.databinding.ActivityAllProductsBinding
 import com.example.hs_kart.model.AddProductModel

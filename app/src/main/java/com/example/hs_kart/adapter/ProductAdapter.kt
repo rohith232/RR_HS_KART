@@ -13,7 +13,7 @@ import com.example.hs_kart.activity.ProductDetailActivity
 import com.example.hs_kart.databinding.LayoutProductItemBinding
 import com.example.hs_kart.model.AddProductModel
 
-class ProductAdapter(val context: Context, val list: ArrayList<AddProductModel>) :
+class ProductAdapter(val context: Context, val list: List<AddProductModel>) :
     RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
 
     inner class ProductViewHolder(val binding: LayoutProductItemBinding) :

@@ -28,7 +28,7 @@
     <string name="no_orders_found">No orders found</string>
     <string name="logged_out_success">Logged out successfully</string>
     <string name="guest_user">Guest User</string>
-    <string name="welcome_user">Welcome, %1$s!</string>
+    <string name="welcome_user">Welcome, %1$s</string>
 
     <string name="back_button">Back</string>
     <string name="cart_icon">Cart</string>
