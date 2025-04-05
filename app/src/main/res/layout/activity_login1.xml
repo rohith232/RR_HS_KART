@@ -1,78 +1,120 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="24dp"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="@color/white">
+    android:background="@drawable/bg_gradient">
 
+    <!-- Logo/Image at the top -->
+    <ImageView
+        android:layout_width="190dp"
+        android:layout_height="120dp"
+        android:layout_marginBottom="32dp"
+        android:contentDescription="@string/app_logo"
+        android:src="@drawable/applogo"
+
+        tools:ignore="UseAppTint" />
+
+    <!-- Email Input -->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/emailInputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         app:boxBackgroundMode="outline"
-        app:boxStrokeColor="@color/purple_500"
-        app:hintTextColor="@color/purple_500">
+        app:boxStrokeColor="@color/white"
+        app:hintTextColor="@color/white"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
-
-        <EditText
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/emailEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Enter Email"
+            android:hint="Email"
             android:inputType="textEmailAddress"
             android:minHeight="48dp"
-            android:textColor="@color/black"
-            android:textColorHint="@color/gray_500"/>
+            android:textColor="@color/white"
+            android:textColorHint="@color/white_alpha_60"/>
     </com.google.android.material.textfield.TextInputLayout>
 
+    <!-- Password Input -->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/passwordInputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="32dp"
         app:boxBackgroundMode="outline"
-        app:boxStrokeColor="@color/purple_500"
-        app:hintTextColor="@color/purple_500">
+        app:boxStrokeColor="@color/white"
+        app:hintTextColor="@color/white"
+        app:endIconMode="password_toggle"
+        app:endIconTint="@color/white"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
-        <EditText
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/passwordEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Enter Password"
+            android:hint="Password"
             android:inputType="textPassword"
             android:minHeight="48dp"
-            android:textColor="@color/black"
-            android:textColorHint="@color/gray_500"/>
+            android:textColor="@color/white"
+            android:textColorHint="@color/white_alpha_60"/>
     </com.google.android.material.textfield.TextInputLayout>
 
-    <Button
+    <!-- Login Button -->
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/loginButton"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginBottom="16dp"
-        android:backgroundTint="@color/purple_500"
-        android:text="Login"
-        android:textColor="@color/white"
-        android:textAllCaps="false"
+        android:backgroundTint="@color/white"
+        android:text="LOGIN"
+        android:textColor="@color/purple_5000"
+        android:textAllCaps="true"
         android:textSize="16sp"
-        android:elevation="4dp"
-        style="@style/Widget.MaterialComponents.Button"/>
+        app:cornerRadius="8dp"
+        app:rippleColor="@color/purple_2000"
+        android:elevation="4dp"/>
 
-    <Button
+    <!-- Divider -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="OR"
+        android:textColor="@color/white"
+        android:textAlignment="center"
+        android:layout_marginVertical="16dp"/>
+
+    <!-- Register Button -->
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/registerButton"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:backgroundTint="@color/white"
-        android:text="Register"
-        android:textColor="@color/purple_500"
-        android:textAllCaps="false"
+        android:backgroundTint="@android:color/transparent"
+        android:text="CREATE NEW ACCOUNT"
+        android:textColor="@color/white"
+        android:textAllCaps="true"
         android:textSize="16sp"
-        android:outlineAmbientShadowColor="@color/purple_200"
-        android:outlineSpotShadowColor="@color/purple_200"
+        android:outlineAmbientShadowColor="@color/purple_2000"
+        android:outlineSpotShadowColor="@color/purple_2000"
+        app:strokeColor="@color/white"
+        app:strokeWidth="1dp"
+        app:cornerRadius="8dp"
+        app:rippleColor="@color/white_alpha_20"
         android:elevation="4dp"
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
+
+    <!-- Forgot Password Link -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Forgot Password?"
+        android:textColor="@color/white"
+        android:layout_marginTop="24dp"
+        android:textSize="14sp"
+        android:textStyle="bold"/>
 </LinearLayout>
