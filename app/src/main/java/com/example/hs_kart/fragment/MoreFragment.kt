@@ -9,6 +9,8 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.hs_kart.R
+import com.example.hs_kart.activity.AboutUsActivity
+import com.example.hs_kart.activity.FAQActivity
 import com.example.hs_kart.activity.LoginActivity1
 import com.example.hs_kart.activity.ProfileActivity
 import com.example.hs_kart.databinding.FragmentMoreBinding
@@ -86,7 +88,18 @@ class MoreFragment : Fragment() {
 
         binding.profile.setOnClickListener {
             startActivity(Intent(requireContext(), ProfileActivity::class.java))
-            requireActivity().finish()
+            requireActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+        }
+        binding.about.setOnClickListener {
+            startActivity(Intent(requireContext(), AboutUsActivity::class.java))
+            requireActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+        }
+        binding.faq.setOnClickListener {
+            if (isAdded && context != null) {
+                startActivity(Intent(requireContext(), FAQActivity::class.java))
+                requireActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+
+            }
         }
     }
 }

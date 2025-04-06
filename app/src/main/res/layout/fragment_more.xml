@@ -13,6 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:layout_marginTop="5dp"
         android:padding="24dp"
         android:background="@drawable/bg_user_section">
 
@@ -72,7 +73,7 @@
 
         <!-- FAQs Card -->
         <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cardFAQs"
+            android:id="@+id/profilecardFAQs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
@@ -96,7 +97,41 @@
                     android:id="@+id/profile"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Profile Settings"
+                    android:text="Profile "
+                    android:textSize="16sp"
+                    android:layout_marginStart="16dp"
+                    android:textColor="@color/text_primary"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+        <!-- NEW FAQ Card - Added right after Profile Card -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardFAQs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="2dp"
+            app:strokeColor="@color/grey_200"
+            app:strokeWidth="1dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_help_outline"
+                    android:tint="@color/primaryColor"
+                    tools:ignore="UseAppTint" />
+
+                <TextView
+                    android:id="@+id/faq"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="FAQs &amp; Help"
                     android:textSize="16sp"
                     android:layout_marginStart="16dp"
                     android:textColor="@color/text_primary"/>
@@ -126,9 +161,10 @@
                     tools:ignore="UseAppTint" />
 
                 <TextView
+                    android:id="@+id/about"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/terms_policies"
+                    android:text="About Application"
                     android:textSize="16sp"
                     android:layout_marginStart="16dp"
                     android:textColor="@color/text_primary"/>
