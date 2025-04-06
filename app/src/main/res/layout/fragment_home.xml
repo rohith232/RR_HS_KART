@@ -23,19 +23,23 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/bg_register"
             android:padding="16dp">
 
             <TextView
                 android:id="@+id/menuTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Your Products in HS Cart 🎉🎉"
+                android:layout_width="259dp"
+                android:layout_height="25dp"
+                android:drawableStart="@drawable/ic_search_small"
+                android:drawablePadding="8dp"
+                android:drawableTint="@color/on_surface"
+                android:text="Search your products..."
                 android:textSize="15sp"
                 android:textStyle="bold"
                 android:textColor="@color/on_surface"
-                android:layout_alignParentStart="true"
-                android:layout_centerVertical="true"/>
-
+                android:gravity="center_vertical"
+                android:paddingStart="12dp"
+                android:background="@drawable/search_background_light"/>
             <ImageView
                 android:id="@+id/menuIcon"
                 android:layout_width="32dp"
@@ -95,6 +99,7 @@
                 android:layout_marginBottom="12dp">
 
                 <TextView
+                    android:id="@+id/shopbycategory"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/on_surface"
@@ -136,6 +141,7 @@
                 android:layout_marginBottom="12dp">
 
                 <TextView
+                    android:id="@+id/suggestedproducts"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/on_surface"

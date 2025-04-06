@@ -63,8 +63,15 @@ class HomeFragment : Fragment() {
 
     private fun setupClickListeners() {
         binding.seeall.setOnClickListener { navigateToCategoryActivity() }
+        binding.shopbycategory.setOnClickListener { navigateToCategoryActivity() }
+
         binding.seeall1.setOnClickListener { navigateToAllProducts() }
+        binding.suggestedproducts.setOnClickListener { navigateToAllProducts() }
+
         binding.menuIcon.setOnClickListener { navigateToProfile() }
+        binding.menuTextView.setOnClickListener { navigateToAllProducts() }
+
+
     }
 
     private fun initializeSliderHandler() {

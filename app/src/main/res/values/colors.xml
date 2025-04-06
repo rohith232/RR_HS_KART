@@ -151,6 +151,15 @@
     <color name="light_blue_50">#E3F2FD</color>
     <color name="light_blue_100">#BBDEFB</color>
 
+        <!-- Existing colors -->
+        <color name="purple_501">#6200EE</color>
+        <color name="purple_701">#3700B3</color>
+        <color name="purple_201">#BB86FC</color>
+
+        <!-- New colors for improved UI -->
+        <color name="light_gray_background">#F5F5F6</color>
+        <color name="dark_gray_text">#212121</color>
+
 
 
 </resources>

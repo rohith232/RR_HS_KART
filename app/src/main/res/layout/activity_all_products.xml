@@ -5,15 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/light_gray_background"
     tools:context=".activity.AllProductsActivity">
 
-    <androidx.appcompat.widget.Toolbar
+    <!-- Improved Toolbar with better shadow and color combination -->
+    <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/purple_500"
-        android:elevation="4dp"
-        app:titleTextColor="@color/white">
+        android:background="@color/purple_701"
+        app:elevation="8dp"
+        app:titleTextColor="@color/white"
+        app:titleMarginStart="16dp">
 
         <TextView
             android:layout_width="wrap_content"
@@ -23,13 +26,54 @@
             android:textSize="20sp"
             android:textStyle="bold" />
 
-    </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.MaterialToolbar>
 
+    <!-- Enhanced Search Box with better visual hierarchy -->
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"
+        app:cardElevation="2dp"
+        app:cardCornerRadius="8dp"
+        app:strokeColor="@color/purple_201"
+        app:strokeWidth="1dp">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/searchContainer"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="       Search products..."
+            app:boxStrokeColor="@color/purple_501"
+            app:endIconMode="clear_text"
+            app:endIconTint="@color/purple_501"
+            app:hintTextColor="@color/purple_501"
+            app:startIconDrawable="@drawable/ic_search"
+            app:startIconTint="@color/purple_501">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/searchInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:imeOptions="actionSearch"
+                android:inputType="text"
+                android:textColor="@color/dark_gray_text" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Improved RecyclerView with better spacing -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/productsRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="8dp"
-        android:clipToPadding="false" />
+        android:paddingHorizontal="8dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="16dp"
+        android:clipToPadding="false"
+        android:scrollbars="vertical" />
 
 </LinearLayout>
