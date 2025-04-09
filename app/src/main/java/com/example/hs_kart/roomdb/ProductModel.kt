@@ -16,6 +16,7 @@ data class ProductModel(
     val productImage: String? = "",
     @ColumnInfo(name = "productSp")
     val productSp: String? = "",
+    var quantity: Int = 1
 
 
 )

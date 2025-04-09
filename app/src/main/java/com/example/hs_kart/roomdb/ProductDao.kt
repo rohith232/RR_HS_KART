@@ -18,4 +18,10 @@ interface ProductDao {
 
     @Query("SELECT * FROM products WHERE productId=:id")
     fun isExit(id:String):ProductModel
+
+    @Query("UPDATE products SET quantity = :quantity WHERE productId = :productId")
+    suspend fun updateProductQuantity(productId: String, quantity: Int)
+
+    @Query("SELECT * FROM products WHERE productId = :productId LIMIT 1")
+    suspend fun getProductById(productId: String): ProductModel?
 }

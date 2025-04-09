@@ -3,9 +3,11 @@ package com.example.hs_kart.adapter
 import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.bumptech.glide.Glide
 import com.example.hs_kart.activity.ProductDetailActivity
 import com.example.hs_kart.databinding.LayoutCartItemBinding
@@ -15,46 +17,91 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
-class CartAdapter(val context: Context,val list: List<ProductModel>):
-RecyclerView.Adapter<CartAdapter.CardViewHolder>(){
+class CartAdapter(val context: Context, private val list: List<ProductModel>) :
+    RecyclerView.Adapter<CartAdapter.CardViewHolder>() {
 
-    inner class CardViewHolder(val binding:LayoutCartItemBinding):
-            RecyclerView.ViewHolder(binding.root)
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardViewHolder {
-        val binding = LayoutCartItemBinding.inflate(LayoutInflater.from(context),parent,false)
-        return CardViewHolder(binding)
+    var onQuantityChanged: ((productId: String, newQuantity: Int) -> Unit)? = null
+    private val quantityAdapter by lazy {
+        ArrayAdapter<String>(
+            context,
+            android.R.layout.simple_spinner_item,
+            (1..10).map { it.toString() }
+        ).apply {
+            setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        }
     }
 
-    override fun getItemCount(): Int {
-        return list.size
-    }
+    inner class CardViewHolder(val binding: LayoutCartItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
-    override fun onBindViewHolder(holder: CardViewHolder, position: Int) {
-        Glide.with(context).load(list[position].productImage).into(holder.binding.imageView4)
+        private var userSelected = false
+        private var currentProduct: ProductModel? = null
 
-        holder.binding.textView11.text = list[position].productName
-        holder.binding.textView12.text = list[position].productSp
+        fun bind(product: ProductModel) {
+            currentProduct = product
 
-        holder.itemView.setOnClickListener {
-            val intent = Intent(context, ProductDetailActivity::class.java)
-            intent.putExtra("id", list[position].productId)
-            context.startActivity(intent)
+            // Load image efficiently
+            Glide.with(context)
+                .load(product.productImage)
+                .centerCrop()
+                .into(binding.imageView4)
+
+            binding.textView11.text = product.productName
+            binding.textView12.text = product.productSp
+
+            // Reuse the shared adapter
+            binding.quantitySpinner.adapter = quantityAdapter
+
+            // Set current quantity without triggering callback
+            userSelected = false
+            binding.quantitySpinner.setSelection((product.quantity ?: 1) - 1, false)
+
+            // Set up item click listeners
+            binding.root.setOnClickListener {
+                context.startActivity(
+                    Intent(context, ProductDetailActivity::class.java).apply {
+                        putExtra("id", product.productId)
+                    }
+                )
+            }
+
+            binding.imageView5.setOnClickListener {
+                GlobalScope.launch(Dispatchers.IO) {
+                    AppDatabase.getInstance(context).productDao().deleteProduct(product)
+                }
+            }
         }
 
-        val dao = AppDatabase.getInstance(context).productDao()
-        holder.binding.imageView5.setOnClickListener {
-            GlobalScope.launch(Dispatchers.IO) {
-                dao.deleteProduct(
-                    ProductModel(
-                        list[position].productId,
-                        list[position].productName,
-                        list[position].productImage,
-                        list[position].productSp
-                    )
-                )
+        init {
+            binding.quantitySpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
+                    if (userSelected) {
+                        currentProduct?.let { product ->
+                            val newQuantity = position + 1
+                            onQuantityChanged?.invoke(product.productId, newQuantity)
+                        }
+                    }
+                    userSelected = true
+                }
 
+                override fun onNothingSelected(parent: AdapterView<*>) {}
             }
         }
     }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardViewHolder {
+        return CardViewHolder(
+            LayoutCartItemBinding.inflate(
+                LayoutInflater.from(context),
+                parent,
+                false
+            )
+        )
+    }
+
+    override fun onBindViewHolder(holder: CardViewHolder, position: Int) {
+        holder.bind(list[position])
+    }
+
+    override fun getItemCount(): Int = list.size
 }

@@ -57,10 +57,22 @@
             android:textSize="14sp"
             android:maxLines="2"
             android:ellipsize="end"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/quantitySpinner"
             app:layout_constraintEnd_toStartOf="@+id/imageView5"
             app:layout_constraintStart_toEndOf="@+id/imageView4"
             app:layout_constraintTop_toBottomOf="@+id/textView11" />
+
+        <!-- Quantity Spinner -->
+        <Spinner
+            android:id="@+id/quantitySpinner"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="8dp"
+            android:background="@android:drawable/btn_dropdown"
+            android:spinnerMode="dropdown"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageView4"
+            app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
         <!-- Action Button -->
         <ImageView
